@@ -1,0 +1,18 @@
+<nav class="pagination is-centered box" role="navigation" aria-label="pagination">
+
+  <ul class="pagination-list">
+    <ng-container *ngIf="currentPage != firstPage">
+      <li><a class="pagination-previous" (click)="emit(previousPage)">Forrige side</a></li>
+      <li><a class="pagination-link" (click)="emit(firstPage)">{{firstPage}}</a></li>
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+    </ng-container>
+    
+    <li><a class="pagination-link is-current" >{{currentPage}}</a></li>
+
+    <ng-container *ngIf="totalPages != currentPage && totalPages != 0">
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+      <li><a class="pagination-link" (click)="emit(totalPages)">{{totalPages}}</a></li>
+      <li><a class="pagination-next" (click)="emit(nextPage)">Neste side</a></li>
+    </ng-container>
+  </ul>
+</nav>

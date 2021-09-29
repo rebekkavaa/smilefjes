@@ -1,0 +1,14 @@
+<div class="columns mt-4">
+    <div class="column is-one-third m-auto is-link">
+    <form class="box" [formGroup]="searchForm">
+    <div class="field">
+      <div class="control">
+        <input class="input" type="text" placeholder="Søk etter navn eller sted..." formControlName="query">
+      </div>
+    </div>
+    <button class="button is-link is-light" (click)="emitChanges()">
+      Søk
+    </button>
+  </form>
+  </div>
+</div>

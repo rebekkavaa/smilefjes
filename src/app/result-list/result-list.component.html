@@ -1,0 +1,47 @@
+<search-box (filterChanged)="search('query',$event)" [input]="query"></search-box>
+<div class="columns mt-4">
+  <div class="columns mt-4" *ngIf="result">
+    <div class="column is-half m-auto is-link ">
+        <div class="columns is-multiline">
+            <div class="column is-half" *ngFor="let item of result.entries">
+                <div class="card">
+                    <div class="card-content">
+                      <div class="media">
+                        <div class="media-left">
+                          <figure class="image is-48x48">
+                            <span [ngSwitch]="item.grade">
+                            <span *ngSwitchCase="Grade.Best">
+                              <img src="../../assets/stort_smilefjes.png" alt="Smiley face">
+                            </span>
+                            <span *ngSwitchCase="Grade.Good">
+                              <img src="../../assets/stort_smilefjes.png" alt="Smiley face">
+                            </span>
+                            <span *ngSwitchCase="Grade.Average">
+                              <img src="../../assets/medium_smilefjes.png" alt="Frowning face">
+                            </span>
+                            <span *ngSwitchCase="Grade.Bad">
+                              <img src="../../assets/surt_smilefjes.png" alt="Sad face">
+                            </span>
+                            <span *ngSwitchDefault>
+                              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </span>
+                            </span>
+                          </figure>
+                        </div>
+                        <div class="media-content">
+                          <p class="title is-4">{{item.name}}</p>
+                          <p class="subtitle is-6 mb-0">{{item.adrLine1}}</p>
+                          <p class="subtitle is-6" *ngIf="item.adrLine2">{{item.adrLine2}}</p>
+                          <p class="subtitle is-6">{{item.postalCode}} {{item.postalCity}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+  </div>
+</div>
+</div>
+<app-pagination *ngIf="result" (filterChanged)="search('page',$event)" [currentPage]="result.page" [totalPages]="result.pages"></app-pagination>
+
+
